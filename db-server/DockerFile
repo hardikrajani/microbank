@@ -1,0 +1,3 @@
+FROM java:8
+ADD h2.jar h2.jar
+ENTRYPOINT ["java", "-cp", "h2.jar", "org.h2.tools.Server", "-webAllowOthers", "-tcpAllowOthers"]

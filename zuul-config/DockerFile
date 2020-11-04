@@ -1,0 +1,4 @@
+FROM java:8
+EXPOSE 8885
+ADD /target/zuul-config-1.0-SNAPSHOT.jar zuul-config-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "zuul-config-1.0-SNAPSHOT.jar"]

@@ -1,7 +1,7 @@
 package com.wellOfJava.micro.demo.userServices.controller;
 
+import com.wellOfJava.micro.demo.commons.model.User;
 import com.wellOfJava.micro.demo.userServices.exception.UserNotFoundException;
-import com.wellOfJava.micro.demo.userServices.model.User;
 import com.wellOfJava.micro.demo.userServices.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

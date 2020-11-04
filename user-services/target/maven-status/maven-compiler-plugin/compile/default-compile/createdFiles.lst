@@ -1,8 +1,0 @@
-com/wellOfJava/micro/demo/model/User.class
-com/wellOfJava/micro/demo/exception/UserExceptionHandler.class
-com/wellOfJava/micro/demo/exception/UserNotFoundException.class
-com/wellOfJava/micro/demo/repository/UserRepository.class
-com/wellOfJava/micro/demo/controller/UserController.class
-com/wellOfJava/micro/demo/exception/ErrorDetails.class
-com/wellOfJava/micro/demo/config/SwaggerConfig.class
-com/wellOfJava/micro/demo/UserApplication.class

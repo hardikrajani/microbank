@@ -1,2 +1,19 @@
 server:
   port: 8882
+spring:
+  application:
+    name: account-services
+  datasource:
+    url: jdbc:mysql://mysql-db:3306/microbank
+    username: hardik123
+    password: hardik123
+  jpa:
+    hibernate:
+      ddl-auto: create
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8880/eureka
+service:
+  transaction:
+    id: transaction-services

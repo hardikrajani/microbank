@@ -1,0 +1,21 @@
+server:
+  port: 8880
+eureka:
+  server:
+    maxThreadsForPeerReplication: 0
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    registerWithEureka: false
+    fetchRegistry: false
+spring:
+  application:
+    name: eureka-server
+#datasource:
+      ##    url: jdbc:h2:mem:mydb
+      ##    driverClassName: org.h2.Driver
+      ##    username: sa
+      ##    password:
+      ##  jpa:
+    ##    hibernate:
+    ##      ddl-auto: create

@@ -1,6 +1,6 @@
 package com.wellOfJava.micro.demo.userServices.controller;
 
-import com.wellOfJava.micro.demo.userServices.model.User;
+import com.wellOfJava.micro.demo.commons.model.User;
 import com.wellOfJava.micro.demo.userServices.repository.UserRepository;
 
 import org.junit.Before;

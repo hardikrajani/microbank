@@ -1,0 +1,121 @@
+version: '3'
+services:
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: ./eureka-server
+      dockerfile: DockerFile
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+      - "8880:8880" 
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8880/actuator/health"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 3     
+#    depends_on:
+#      - mysql-db
+#        condition: service_healthy
+    networks:
+      - microbank
+  mysql-db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: microbank
+      MYSQL_USER: hardik123
+      MYSQL_PASSWORD: hardik123
+      MYSQL_ROOT_PASSWORD: hardik123
+#    healthcheck:
+#          test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+#          timeout: 20s
+#          retries: 10      
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - microbank
+  account-services:
+    container_name: account-services
+    build:
+      context: ./account-services
+      dockerfile: DockerFile
+    image: account-services:latest
+    ports:
+      - "8882:8882"  
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8882/actuator/health"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 3     
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - microbank
+  transaction-services:
+    container_name: transaction-services
+    build:
+      context: ./transaction-services
+      dockerfile: DockerFile
+    image: transaction-services:latest
+    ports:
+     - "8883:8883"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8883/actuator/health"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 3     
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+     - microbank
+  user-services:
+   container_name: user-services
+   build:
+     context: ./user-services
+     dockerfile: DockerFile
+   image: user-services:latest
+   expose:
+     - 8881
+   ports:
+     - 8881:8881     
+   healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8881/actuator/health"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 3     
+   depends_on:
+      eureka-server:
+        condition: service_healthy
+   networks:
+     - microbank
+  zuul-config:
+    container_name: zuul-config
+    build:
+        context: ./zuul-config
+        dockerfile: DockerFile
+    image: zuul-config:latest
+    expose:
+        - 8885
+    ports:
+        - 8885:8885
+    depends_on:
+        eureka-server:
+            condition: service_healthy
+        transaction-services:
+           condition: service_healthy
+        user-services:
+           condition: service_healthy
+        account-services:
+           condition: service_healthy
+    networks:
+        - microbank
+volumes:
+  db-data:
+networks:
+  microbank:
+    name: microbank

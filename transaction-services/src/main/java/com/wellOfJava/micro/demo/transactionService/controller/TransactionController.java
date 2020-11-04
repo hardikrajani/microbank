@@ -1,7 +1,7 @@
 package com.wellOfJava.micro.demo.transactionService.controller;
 
+import com.wellOfJava.micro.demo.commons.model.Transaction;
 import com.wellOfJava.micro.demo.transactionService.exception.TransactionNotFoundException;
-import com.wellOfJava.micro.demo.transactionService.model.Transaction;
 import com.wellOfJava.micro.demo.transactionService.repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

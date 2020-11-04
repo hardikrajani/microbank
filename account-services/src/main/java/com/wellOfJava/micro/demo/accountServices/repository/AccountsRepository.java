@@ -1,6 +1,6 @@
 package com.wellOfJava.micro.demo.accountServices.repository;
 
-import com.wellOfJava.micro.demo.accountServices.model.Account;
+import com.wellOfJava.micro.demo.commons.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

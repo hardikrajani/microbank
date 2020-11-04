@@ -1,0 +1,23 @@
+server:
+  port: 8885
+spring:
+  application:
+    name: zuul-server
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8880/eureka
+zuul:
+  routes:
+    account-services: /account-services/**
+#      path: /account-services/**
+#      service-id: account-services
+    transaction-services: /transaction-services/**
+#      path: /transaction-services/**
+#      service-id: transaction-services
+    user-services: /user-services/**
+#      path: /user-services/**
+#      service-id: user-services          
+      

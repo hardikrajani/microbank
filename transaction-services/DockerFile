@@ -1,0 +1,4 @@
+FROM java:8
+EXPOSE 8883
+ADD /target/transaction-services-1.0-SNAPSHOT.jar transaction-services-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "transaction-services-1.0-SNAPSHOT.jar"]
